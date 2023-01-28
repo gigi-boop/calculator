@@ -1,0 +1,56 @@
+html {
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    background-repeat: no-repeat;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-height: 100vh;
+}
+
+img,
+video,
+canvas,
+object,
+iframe,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+p,
+li,
+dl,
+dt {
+    overflow-wrap: break-word;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+sub,
+sup {
+    line-height: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+table {
+    border-collapse: collapse;
+}
