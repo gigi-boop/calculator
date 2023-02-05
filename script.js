@@ -4,7 +4,8 @@ const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 
 const equalsButton = document.querySelector(".equals");
-const display = document.querySelector(".display");
+const expressionDisplay = document.querySelector(".expressionDisplay");
+const numberDisplay = document.querySelector(".numberDisplay");
 
 let operand1 = null;
 let operand2 = null;
@@ -31,17 +32,12 @@ function operate(operation, a, b) {
 }
 
 function populateDisplay(buttonText) {
-    //resets display when a number is pressed if display is currently showing a non-number
-    if (/\D+/g.test(display.textContent)) {
-        display.textContent = "";
-    }
-
-    display.textContent += buttonText;
+    numberDisplay.textContent += buttonText;
 }
 
 function evaluate() {
-    operand2 = parseInt(display.textContent);
-    display.textContent = operate(window[operator], operand1, operand2);
+    operand2 = parseInt(numberDisplay.textContent);
+    numberDisplay.textContent = operate(window[operator], operand1, operand2);
 }
 
 numberButtons.forEach((button) => {
@@ -56,12 +52,14 @@ operatorButtons.forEach((button) => {
             evaluate();
         }
 
-        operand1 = parseInt(display.textContent);
-        display.textContent = `${button.textContent}`;
+        operand1 = parseInt(numberDisplay.textContent);
+        expressionDisplay.textContent = `${numberDisplay.textContent} ${button.textContent}`;
+        numberDisplay.textContent = "";
         operator = event.target.classList[1];
     });
 });
 
 equalsButton.addEventListener("click", () => {
+    expressionDisplay.textContent += `${numberDisplay.textContent} =`;
     evaluate();
 });
