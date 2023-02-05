@@ -4,6 +4,7 @@ const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 
 const equalsButton = document.querySelector(".equals");
+const clearButton = document.querySelector(".clear");
 const expressionDisplay = document.querySelector(".expressionDisplay");
 const numberDisplay = document.querySelector(".numberDisplay");
 
@@ -62,4 +63,13 @@ operatorButtons.forEach((button) => {
 equalsButton.addEventListener("click", () => {
     expressionDisplay.textContent += `${numberDisplay.textContent} =`;
     evaluate();
+});
+
+clearButton.addEventListener("click", () => {
+    operand1 = null;
+    operand2 = null;
+    operator = null;
+
+    expressionDisplay.textContent = "";
+    numberDisplay.textContent = "";
 });
