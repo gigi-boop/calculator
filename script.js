@@ -44,7 +44,9 @@ function evaluate() {
         return;
     }
 
-    numberDisplay.textContent = operate(window[operator], operand1, operand2);
+    numberDisplay.textContent = Number(
+        operate(window[operator], operand1, operand2).toFixed(6)
+    );
 }
 
 function reset() {
