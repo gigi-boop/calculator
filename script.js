@@ -38,6 +38,12 @@ function populateDisplay(buttonText) {
 
 function evaluate() {
     operand2 = Number(numberDisplay.textContent);
+
+    if (operand2 === 0 && operator === "divide") {
+        numberDisplay.textContent = "Nice try";
+        return;
+    }
+
     numberDisplay.textContent = operate(window[operator], operand1, operand2);
 }
 
@@ -62,7 +68,10 @@ numberButtons.forEach((button) => {
 
 operatorButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-        if (numberDisplay.textContent === "") {
+        if (
+            numberDisplay.textContent === "" ||
+            numberDisplay.textContent === "Nice try"
+        ) {
             return;
         }
 
