@@ -37,23 +37,40 @@ function populateDisplay(buttonText) {
 }
 
 function evaluate() {
-    operand2 = parseInt(numberDisplay.textContent);
+    operand2 = Number(numberDisplay.textContent);
     numberDisplay.textContent = operate(window[operator], operand1, operand2);
+}
+
+function reset() {
+    operand1 = null;
+    operand2 = null;
+    operator = null;
+
+    expressionDisplay.textContent = "";
+    numberDisplay.textContent = "";
 }
 
 numberButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
+        if (/=/.test(expressionDisplay.textContent)) {
+            reset();
+        }
+
         populateDisplay(event.target.textContent);
     });
 });
 
 operatorButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-        if (operand1 !== null) {
+        if (numberDisplay.textContent === "") {
+            return;
+        }
+
+        if (operand1 !== null && !/=/.test(expressionDisplay.textContent)) {
             evaluate();
         }
 
-        operand1 = parseInt(numberDisplay.textContent);
+        operand1 = Number(numberDisplay.textContent);
         expressionDisplay.textContent = `${numberDisplay.textContent} ${button.textContent}`;
         numberDisplay.textContent = "";
         operator = event.target.classList[1];
@@ -61,15 +78,18 @@ operatorButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener("click", () => {
-    expressionDisplay.textContent += `${numberDisplay.textContent} =`;
+    if (
+        numberDisplay.textContent === "" ||
+        /=/.test(expressionDisplay.textContent)
+    ) {
+        return;
+    }
+
+    expressionDisplay.textContent += " " + `${numberDisplay.textContent} =`;
     evaluate();
+    operand1 = Number(numberDisplay.textContent);
 });
 
 clearButton.addEventListener("click", () => {
-    operand1 = null;
-    operand2 = null;
-    operator = null;
-
-    expressionDisplay.textContent = "";
-    numberDisplay.textContent = "";
+    reset();
 });
