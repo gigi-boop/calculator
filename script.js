@@ -3,6 +3,7 @@
 const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 
+const decimalButton = document.querySelector(".decimal");
 const equalsButton = document.querySelector(".equals");
 const clearButton = document.querySelector(".clear");
 const expressionDisplay = document.querySelector(".expressionDisplay");
@@ -66,6 +67,14 @@ numberButtons.forEach((button) => {
 
         populateDisplay(event.target.textContent);
     });
+});
+
+decimalButton.addEventListener("click", (event) => {
+    if (/\./.test(numberDisplay.textContent)) {
+        return;
+    }
+
+    populateDisplay(event.target.textContent);
 });
 
 operatorButtons.forEach((button) => {
