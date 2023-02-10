@@ -118,3 +118,19 @@ clearButton.addEventListener("click", () => {
 allClearButton.addEventListener("click", () => {
     reset();
 });
+
+window.addEventListener("keydown", (event) => {
+    event.preventDefault();
+
+    if (event.key === "Enter") {
+        equalsButton.click();
+    }
+
+    let button = document.querySelector(`[data-key="${event.key}"]`);
+
+    if (!button) {
+        return;
+    }
+
+    button.click();
+});
