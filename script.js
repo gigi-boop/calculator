@@ -6,6 +6,7 @@ const operatorButtons = document.querySelectorAll(".operator");
 const decimalButton = document.querySelector(".decimal");
 const equalsButton = document.querySelector(".equals");
 const clearButton = document.querySelector(".clear");
+const allClearButton = document.querySelector(".allClear");
 const expressionDisplay = document.querySelector(".expressionDisplay");
 const numberDisplay = document.querySelector(".numberDisplay");
 
@@ -111,5 +112,9 @@ equalsButton.addEventListener("click", () => {
 });
 
 clearButton.addEventListener("click", () => {
+    numberDisplay.textContent = "";
+});
+
+allClearButton.addEventListener("click", () => {
     reset();
 });
