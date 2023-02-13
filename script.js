@@ -120,6 +120,13 @@ allClearButton.addEventListener("click", () => {
     reset();
 });
 
+//prevents buttons from taking focus on click in Chrome
+document.addEventListener("click", () => {
+    if (document.activeElement.toString() == "[object HTMLButtonElement]") {
+        document.activeElement.blur();
+    }
+});
+
 window.addEventListener("keydown", (event) => {
     event.preventDefault();
 
