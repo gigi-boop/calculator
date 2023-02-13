@@ -101,7 +101,8 @@ operatorButtons.forEach((button) => {
 equalsButton.addEventListener("click", () => {
     if (
         numberDisplay.textContent === "" ||
-        /=/.test(expressionDisplay.textContent)
+        /=/.test(expressionDisplay.textContent) ||
+        operand1 === null
     ) {
         return;
     }
