@@ -1,35 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap");
+
 @font-face {
     font-family: "Digital-7-Mono";
     src: url("https://gigi-boop.github.io/hosted-assets/digital-7-mono.ttf");
 }
 
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(278, 55%, 93%);
+}
+
 button {
-    width: 50px;
-    height: 50px;
-    margin-left: 1em;
+    border: none;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 14px;
+    /* text-shadow: 1px 1px 1px hsl(278, 20%, 60%, 70%); */
+    color: hsl(278, 82%, 17%);
 }
 
 .calculator {
+    --shadow: hsl(332, 100%, 80%);
+    height: 602px;
+    max-width: 20em;
+    padding-inline: 1.5em;
+    padding-block: 3em;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    row-gap: 2.5em;
+    background-color: #ffc8dd;
+    border: 5px solid var(--shadow);
+    border-radius: 20px;
+    box-shadow: 1px -1px var(--shadow), 2px -2px var(--shadow),
+        3px -3px hsl(332, 100%, 79%), 4px -4px hsl(332, 100%, 79%),
+        5px -5px hsl(332, 100%, 78%), 6px -6px hsl(332, 100%, 78%),
+        7px -7px hsl(332, 100%, 77%), 8px -8px hsl(332, 100%, 77%),
+        9px -9px hsl(332, 100%, 76%), 10px -10px hsl(332, 100%, 76%),
+        11px -11px hsl(332, 100%, 75%), 12px -12px hsl(332, 100%, 75%),
+        13px -13px hsl(332, 100%, 75%);
 }
 
 .display {
-    width: 10em;
-    height: 5em;
-    padding-inline: 0.25em;
-    background-color: #ccc;
+    width: 100%;
+    height: 6em;
+    padding-inline: 1em;
+    overflow: hidden;
+    background-color: hsl(0, 0%, 80%);
     font-family: "Digital-7-Mono";
+    color: hsl(278, 82%, 17%);
     text-align: right;
+    border-radius: 10px;
+    box-shadow: inset -2px 2px 12px hsl(278, 20%, 60%, 70%);
 }
 
 .expressionDisplay {
-    height: 35%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     font-size: 1.25em;
 }
 
 .numberDisplay {
-    height: 65%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
     font-size: 2rem;
+    line-height: 1;
+}
+
+.resetButtonsContainer {
+    width: 100%;
+    margin-inline: -1em;
+    display: inherit;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 1em;
+}
+
+.buttonsContainer {
+    width: 100%;
+    padding-inline: 1em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    row-gap: 3em;
+    column-gap: 2em;
+}
+
+.heart {
+    --shadow: hsl(143, 62%, 59%);
+    width: 28px;
+    height: 28px;
+    background-color: hsl(143, 62%, 79%);
+    filter: drop-shadow(2px 2px var(--shadow));
+    transform: rotate(-45deg);
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    background-color: inherit;
+    z-index: -1;
+}
+
+.heart::before {
+    top: -16px;
+    left: 0px;
+}
+
+.heart::after {
+    top: 0px;
+    left: 16px;
+}
+
+.heart:active {
+    filter: drop-shadow(1px 1px var(--shadow));
+    transform: rotate(-45deg) translateY(2px);
+}
+
+.heart span {
+    position: relative;
+    bottom: 4px;
+    left: 3px;
+    display: inline-block;
+    transform: rotate(45deg);
+}
+
+.resetButton {
+    --shadow: hsl(209, 100%, 62%);
+    width: 50%;
+    height: 4em;
+    background-color: hsl(209, 100%, 82%);
+    border-radius: 20px;
+    filter: drop-shadow(3px -2px var(--shadow));
+}
+
+.resetButton:active {
+    filter: drop-shadow(2px -1px var(--shadow));
+    transform: translate(2px, -2px);
+}
+
+.resetButton span {
+    font-size: 1.3rem;
+}
+
+.equals {
+    --shadow: hsl(54, 91%, 76%);
+    background-color: hsl(54, 91%, 86%);
+}
+
+.operator {
+    --shadow: hsl(278, 35%, 58%);
+    background-color: hsl(278, 35%, 78%);
 }

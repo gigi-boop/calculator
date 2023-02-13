@@ -66,7 +66,7 @@ numberButtons.forEach((button) => {
             reset();
         }
 
-        populateDisplay(event.target.textContent);
+        populateDisplay(event.target.innerText);
     });
 });
 
@@ -75,7 +75,7 @@ decimalButton.addEventListener("click", (event) => {
         return;
     }
 
-    populateDisplay(event.target.textContent);
+    populateDisplay(event.target.innerText);
 });
 
 operatorButtons.forEach((button) => {
@@ -92,7 +92,7 @@ operatorButtons.forEach((button) => {
         }
 
         operand1 = Number(numberDisplay.textContent);
-        expressionDisplay.textContent = `${numberDisplay.textContent} ${button.textContent}`;
+        expressionDisplay.textContent = `${numberDisplay.textContent} ${button.innerText}`;
         numberDisplay.textContent = "";
         operator = event.target.classList[1];
     });
